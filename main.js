@@ -224,10 +224,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const email = form.querySelector('#f-email').value.trim();
       const phone = form.querySelector('#f-phone').value.trim();
 
+      const privacy = form.querySelector('#f-privacy');
+
       let valid = true;
       if (!name) { showFieldError('f-name', 'Name is required'); valid = false; }
       if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showFieldError('f-email', 'Valid email required'); valid = false; }
       if (!phone) { showFieldError('f-phone', 'Phone number is required'); valid = false; }
+      if (privacy && !privacy.checked) { showPrivacyError(privacy); valid = false; }
 
       if (!valid) return;
 
@@ -246,6 +249,9 @@ document.addEventListener('DOMContentLoaded', () => {
     form.querySelectorAll('input, select, textarea').forEach(field => {
       field.addEventListener('input', () => clearFieldError(field.id));
     });
+
+    const privacyBox = form.querySelector('#f-privacy');
+    if (privacyBox) privacyBox.addEventListener('change', () => clearPrivacyError(privacyBox));
   }
 
   function showFieldError(id, msg) {
@@ -468,3 +474,26 @@ document.addEventListener('DOMContentLoaded', () => {
   if (exitOverlay) exitOverlay.addEventListener('click', hideExitPopup);
 
 });
+
+// Privacy checkbox helpers
+function showPrivacyError(checkbox) {
+  const wrap = checkbox.closest('.form-privacy-check');
+  if (!wrap) return;
+  wrap.querySelector('.privacy-custom-check').style.borderColor = '#ef4444';
+  let err = wrap.querySelector('.privacy-error');
+  if (!err) {
+    err = document.createElement('span');
+    err.className = 'privacy-error';
+    err.style.cssText = 'color:#ef4444;font-size:0.78rem;display:block;margin-top:6px;';
+    wrap.appendChild(err);
+  }
+  err.textContent = 'Please agree to the Privacy Policy to continue';
+}
+
+function clearPrivacyError(checkbox) {
+  const wrap = checkbox.closest('.form-privacy-check');
+  if (!wrap) return;
+  wrap.querySelector('.privacy-custom-check').style.borderColor = '';
+  const err = wrap.querySelector('.privacy-error');
+  if (err) err.remove();
+}

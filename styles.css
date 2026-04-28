@@ -861,6 +861,66 @@ select.calc-input { cursor: pointer; }
   margin-top: 8px;
 }
 
+/* Privacy Policy Checkbox */
+.form-privacy-check {
+  margin-bottom: 16px;
+}
+
+.privacy-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.privacy-label input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.privacy-custom-check {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-radius: 4px;
+  background: rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+  transition: background 0.2s, border-color 0.2s;
+  color: transparent;
+}
+
+.privacy-label input[type="checkbox"]:checked + .privacy-custom-check {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--navy);
+}
+
+.privacy-label:hover .privacy-custom-check {
+  border-color: rgba(255,255,255,0.7);
+}
+
+.privacy-text {
+  font-size: 0.83rem;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.5;
+}
+
+.privacy-link {
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.privacy-link:hover {
+  color: var(--white);
+}
+
 /* Toast */
 .toast {
   position: fixed;
