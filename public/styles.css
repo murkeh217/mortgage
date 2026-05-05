@@ -19,6 +19,7 @@
   --radius-sm: 12px;
   --radius-md: 20px;
   --radius-lg: 28px;
+  --trust-bar-height: 36px;
   --transition: 0.25s ease;
 }
 
@@ -31,6 +32,7 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
+  padding-top: var(--trust-bar-height);
 }
 
 h1, h2, h3, h4, h5 {
@@ -57,7 +59,7 @@ img { max-width: 100%; display: block; }
 /* =================== HEADER =================== */
 #header {
   position: fixed;
-  top: 0; left: 0; right: 0;
+  top: var(--trust-bar-height); left: 0; right: 0;
   z-index: 1000;
   background: rgba(255,255,255,0.97);
   box-shadow: 0 2px 20px rgba(4,9,86,0.06);
@@ -207,7 +209,7 @@ img { max-width: 100%; display: block; }
   z-index: 999;
   display: flex;
   flex-direction: column;
-  padding: 90px 32px 40px;
+  padding: calc(var(--trust-bar-height) + 90px) 32px 40px;
   opacity: 0;
   pointer-events: none;
   transform: translateX(100%);
@@ -1078,6 +1080,8 @@ footer {
 @media (max-width: 768px) {
   section { padding: 64px 0; }
 
+  :root { --trust-bar-height: 58px; }
+
   .header-nav, .header-cta { display: none; }
   .hamburger { display: flex; }
 
@@ -1119,12 +1123,12 @@ footer {
 /* ============================================================
    TRUST BAR
 ============================================================ */
-.trust-bar { background: var(--navy); padding: 9px 20px; overflow: hidden; }
+.trust-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 1100; min-height: var(--trust-bar-height); display: flex; align-items: center; background: var(--navy); padding: 9px 20px; overflow: hidden; }
 .trust-bar-inner { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
 .trust-item { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.85); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.04em; white-space: nowrap; }
 .trust-item svg { flex-shrink: 0; }
 .trust-sep { color: rgba(255,255,255,0.3); font-size: 0.8rem; }
-@media (max-width: 768px) { .trust-sep { display: none; } .trust-bar-inner { gap: 12px; } }
+@media (max-width: 768px) { .trust-bar { padding: 8px 14px; } .trust-sep { display: none; } .trust-bar-inner { gap: 8px 12px; } }
 
 /* ============================================================
    HERO — DUAL CTA

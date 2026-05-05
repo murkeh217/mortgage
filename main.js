@@ -77,7 +77,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const target = document.querySelector(targetId);
       if (target) {
         e.preventDefault();
-        const offset = header.offsetHeight + 12;
+        const trustBar = document.querySelector('.trust-bar');
+        const offset = header.offsetHeight + (trustBar ? trustBar.offsetHeight : 0) + 12;
         const top = target.getBoundingClientRect().top + window.scrollY - offset;
         window.scrollTo({ top, behavior: 'smooth' });
       }
