@@ -254,6 +254,34 @@ document.addEventListener('DOMContentLoaded', () => {
     if (privacyBox) privacyBox.addEventListener('change', () => clearPrivacyError(privacyBox));
   }
 
+  /* ============================================================
+     FLOATING PRIVACY CONSENT
+  ============================================================ */
+  const floatingPrivacy = document.getElementById('floating-privacy-consent');
+  const floatingPrivacyCheck = document.getElementById('floating-privacy-check');
+
+  if (floatingPrivacy && floatingPrivacyCheck) {
+    const consentKey = 'privacyPolicyAccepted';
+
+    try {
+      if (localStorage.getItem(consentKey) === 'true') {
+        floatingPrivacy.classList.add('is-hidden');
+      }
+    } catch (_) {}
+
+    floatingPrivacyCheck.addEventListener('change', () => {
+      if (!floatingPrivacyCheck.checked) return;
+
+      try {
+        localStorage.setItem(consentKey, 'true');
+      } catch (_) {}
+
+      window.setTimeout(() => {
+        floatingPrivacy.classList.add('is-hidden');
+      }, 450);
+    });
+  }
+
   function showFieldError(id, msg) {
     const field = document.getElementById(id);
     if (!field) return;
