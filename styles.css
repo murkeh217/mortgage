@@ -1183,8 +1183,8 @@ footer {
 /* ============================================================
    TRUST BAR
 ============================================================ */
-.trust-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 1100; min-height: var(--trust-bar-height); display: flex; align-items: center; background: var(--navy); padding: 9px 20px; overflow: hidden; }
-.trust-bar-inner { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+.trust-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 1100; min-height: var(--trust-bar-height); display: flex; align-items: center; justify-content: center; background: var(--navy); padding: 9px 20px; overflow: hidden; }
+.trust-bar-inner { width: 100%; max-width: 1180px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; text-align: center; }
 .trust-item { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.85); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.04em; white-space: nowrap; }
 .trust-item svg { flex-shrink: 0; }
 .trust-sep { color: rgba(255,255,255,0.3); font-size: 0.8rem; }
