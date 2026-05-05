@@ -453,9 +453,8 @@ section { padding: 90px 0; }
   width: 100%;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);
-  aspect-ratio: 4/5;
-  object-fit: cover;
-  object-position: top;
+  height: auto;
+  object-fit: contain;
 }
 
 .bio-badge {
@@ -532,18 +531,23 @@ section { padding: 90px 0; }
 }
 
 .service-card-img {
-  height: 160px;
+  height: 180px;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  background: linear-gradient(180deg, #f7f9fd 0%, #eef3fb 100%);
 }
 
 .service-card-img img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   transition: transform 0.5s ease;
 }
 
-.service-card:hover .service-card-img img { transform: scale(1.06); }
+.service-card:hover .service-card-img img { transform: none; }
 
 .service-card-body { padding: 18px; }
 .service-card-body h4 { font-size: 1rem; margin-bottom: 8px; color: var(--navy); }
@@ -988,7 +992,7 @@ footer {
 
   .bio-grid { grid-template-columns: 1fr; gap: 48px; }
   .bio-badge { bottom: -16px; left: 16px; }
-  .bio-image-wrap img { aspect-ratio: 3/2; }
+  .bio-image-wrap img { max-height: none; }
 
   .services-grid { grid-template-columns: repeat(2, 1fr); }
 
